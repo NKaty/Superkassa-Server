@@ -2,9 +2,65 @@
   "name": "superkassa-server",
   "version": "0.1.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "lint:check": "eslint server/. --ext=js --max-warnings=0; exit 0",
+    "lint:fix": "eslint --fix --max-warnings=0",
+    "prettier": "prettier --write"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "socket.io": "^3.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "standard",
+      "prettier"
+    ],
+    "rules": {
+      "semi": [
+        2,
+        "always"
+      ],
+      "prettier/prettier": [
+        "error"
+      ]
+    },
+    "env": {
+      "node": true
+    },
+    "plugins": [
+      "prettier"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "tabWidth": 2,
+    "semi": true,
+    "arrowParens": "avoid",
+    "trailingComma": "es5"
+  },
+  "lint-staged": {
+    "server/**/*.js": [
+      "npm run prettier",
+      "npm run lint:fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
