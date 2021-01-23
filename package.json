@@ -1,0 +1,10 @@
+{
+  "name": "superkassa-server",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {},
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^3.1.0"
+  }
+}
