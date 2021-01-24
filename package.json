@@ -1,7 +1,14 @@
 {
   "name": "superkassa-server",
+  "description": "Superkassa test assignment. Server.",
   "version": "0.1.0",
   "main": "index.js",
+  "engines": {
+    "node": "12.x"
+  },
+  "private": true,
+  "author": "NKaty",
+  "license": "ISC",
   "scripts": {
     "start": "NODE_ENV=production node index.js",
     "server": "NODE_ENV=develepment nodemon index.js",
