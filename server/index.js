@@ -6,11 +6,13 @@ const io = require('socket.io')(server);
 let buttonActive = false;
 
 io.on('connection', socket => {
-  socket.emit('set-state', buttonActive);
-
   socket.on('toggle-state', () => {
     buttonActive = !buttonActive;
     io.emit('set-state', buttonActive);
+  });
+
+  socket.on('new-connection', () => {
+    socket.emit('set-state', buttonActive);
   });
 
   socket.on('disconnect', () => {
