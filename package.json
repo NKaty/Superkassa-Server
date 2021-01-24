@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "main": "index.js",
   "scripts": {
+    "start": "NODE_ENV=production node index.js",
+    "server": "NODE_ENV=develepment nodemon index.js",
     "lint:check": "eslint server/. --ext=js --max-warnings=0; exit 0",
     "lint:fix": "eslint --fix --max-warnings=0",
     "prettier": "prettier --write"
@@ -21,6 +23,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "husky": "^4.3.8",
     "lint-staged": "^10.5.3",
+    "nodemon": "^2.0.7",
     "prettier": "^2.2.1"
   },
   "eslintConfig": {
