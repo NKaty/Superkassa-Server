@@ -3,7 +3,20 @@ const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
-io.on('connection', socket => {});
+let buttonActive = false;
+
+io.on('connection', socket => {
+  socket.emit('set-state', buttonActive);
+
+  socket.on('toggle-state', () => {
+    buttonActive = !buttonActive;
+    io.emit('set-state', buttonActive);
+  });
+
+  socket.on('disconnect', () => {
+    if (!io.of('/').sockets.size) buttonActive = false;
+  });
+});
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
@@ -13,4 +26,4 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.listen(process.env.PORT || 5000);
+server.listen(process.env.PORT || 5000);
