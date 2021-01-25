@@ -1,10 +1,14 @@
 {
   "name": "superkassa-server",
-  "description": "Superkassa test assignment. Server.",
+  "description": "Superkassa test assignment. Server implementation.",
   "version": "0.1.0",
   "main": "index.js",
   "engines": {
     "node": "12.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NKaty/Superkassa-Server.git"
   },
   "private": true,
   "author": "NKaty",
